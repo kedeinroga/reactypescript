@@ -13,7 +13,7 @@ function App(): JSX.Element {
   const habdeleSubmit = (e: FromElement) => {
     e.preventDefault();
     addTask(newTask);
-    console.log(tasks);
+    setNewTask('');
   }
 
   const addTask = (name: string) => {
@@ -23,7 +23,7 @@ function App(): JSX.Element {
   return (
     <Fragment>
       <form onSubmit={habdeleSubmit} >
-        <input type="text" onChange={e => setNewTask(e.target.value)} />
+        <input type="text" onChange={e => setNewTask(e.target.value)} value={newTask} />
         <button>save</button>
       </form>
     </Fragment>
