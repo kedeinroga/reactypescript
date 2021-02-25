@@ -26,6 +26,11 @@ function App(): JSX.Element {
         <input type="text" onChange={e => setNewTask(e.target.value)} value={newTask} />
         <button>save</button>
       </form>
+      {
+        tasks.map((t: ITask, i: number) => {
+          return <h1 key={i}>{t.name}</h1>
+        })
+      }
     </Fragment>
   );
 }
