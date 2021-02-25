@@ -2,12 +2,23 @@ import { type } from 'os';
 import React, { Fragment, useState } from 'react';
 
 type FromElement = React.FormEvent<HTMLFormElement>
+interface ITask {
+  name: string;
+  done: boolean;
+}
 
 function App(): JSX.Element {
-  const [newTask, setNewTask] = useState('');
+  const [newTask, setNewTask] = useState<string>('');
+  const [tasks, setTasks] = useState<ITask[]>([])
   const habdeleSubmit = (e: FromElement) => {
     e.preventDefault();
-    console.log(newTask)
+    addTask(newTask);
+    console.log(tasks);
+  }
+
+  const addTask = (name: string) => {
+    const newTasks: ITask[] = [...tasks, { name, done: false }]
+    setTasks(newTasks)
   }
   return (
     <Fragment>
