@@ -1,10 +1,13 @@
+import { type } from 'os';
 import React, { Fragment, useState } from 'react';
+
+type FromElement = React.FormEvent<HTMLFormElement>
 
 function App(): JSX.Element {
   const [newTask, setNewTask] = useState('');
-  const habdeleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const habdeleSubmit = (e: FromElement) => {
     e.preventDefault();
-    console.log("Submiting")
+    console.log(newTask)
   }
   return (
     <Fragment>
