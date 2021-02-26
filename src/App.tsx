@@ -39,7 +39,10 @@ function App(): JSX.Element {
           </div>
           {tasks.map((t: ITask, i: number) => (
             <div className="card card-body mt-2" key={i}>
-              <h2>{t.name}</h2>
+              <h2 style={{ textDecoration: t.done ? "line-through" : "" }}>
+                {t.name}
+              </h2>
+              <p>{t.done + ""}</p>
             </div>
           ))}
         </div>
