@@ -27,7 +27,9 @@ function App(): JSX.Element {
   };
 
   const removeTask = (i: number): void => {
-    console.log(i);
+    const newTasks: ITask[] = [...tasks];
+    newTasks.splice(i, 1);
+    setTasks(newTasks);
   };
   return (
     <div className="container p-4">
