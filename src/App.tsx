@@ -19,6 +19,12 @@ function App(): JSX.Element {
     const newTasks: ITask[] = [...tasks, { name, done: false }];
     setTasks(newTasks);
   };
+
+  const toggleDoneTask = (i: number) => {
+    const newTasks: ITask[] = [...tasks];
+    newTasks[i].done = !newTasks[i].done;
+    setTasks(newTasks);
+  };
   return (
     <div className="container p-4">
       <div className="row">
@@ -42,7 +48,14 @@ function App(): JSX.Element {
               <h2 style={{ textDecoration: t.done ? "line-through" : "" }}>
                 {t.name}
               </h2>
-              <p>{t.done + ""}</p>
+              <div>
+                <button
+                  className="bttn btn-secundary"
+                  onClick={() => toggleDoneTask(i)}
+                >
+                  {t.done ? "✓" : "✗"}
+                </button>
+              </div>
             </div>
           ))}
         </div>
