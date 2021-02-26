@@ -15,15 +15,19 @@ function App(): JSX.Element {
     setNewTask("");
   };
 
-  const addTask = (name: string) => {
+  const addTask = (name: string): void => {
     const newTasks: ITask[] = [...tasks, { name, done: false }];
     setTasks(newTasks);
   };
 
-  const toggleDoneTask = (i: number) => {
+  const toggleDoneTask = (i: number): void => {
     const newTasks: ITask[] = [...tasks];
     newTasks[i].done = !newTasks[i].done;
     setTasks(newTasks);
+  };
+
+  const removeTask = (i: number): void => {
+    console.log(i);
   };
   return (
     <div className="container p-4">
@@ -50,10 +54,16 @@ function App(): JSX.Element {
               </h2>
               <div>
                 <button
-                  className="bttn btn-secundary"
+                  className="btn btn-secundary"
                   onClick={() => toggleDoneTask(i)}
                 >
                   {t.done ? "✓" : "✗"}
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => removeTask(i)}
+                >
+                  🗑
                 </button>
               </div>
             </div>
